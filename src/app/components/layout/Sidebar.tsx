@@ -5,13 +5,16 @@ import { usePathname } from 'next/navigation';
 import {
   Compass,
   Map,
+  Settings,
   RotateCcw,
+  FlaskConical,
 } from 'lucide-react';
 import { cn } from '@/lib/utils/format';
 import { UserSwitcher } from './UserSwitcher';
 
 const navItems = [
   { href: '/trips', label: 'Trips', icon: Map },
+  { href: '/settings', label: 'Settings', icon: Settings },
 ];
 
 export function Sidebar() {
@@ -42,10 +45,23 @@ export function Sidebar() {
         </Link>
       </div>
 
+      {/* Environment badge */}
+      <div className="px-4 py-2.5">
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-amber-900/15 border border-amber-800/20 rounded-lg">
+          <FlaskConical className="w-3 h-3 text-amber-400" />
+          <span className="text-[10px] text-amber-400 uppercase tracking-wider font-medium">
+            Mock Mode — Demo
+          </span>
+        </div>
+      </div>
+
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
+      <nav className="flex-1 px-3 py-2 space-y-1">
         {navItems.map((item) => {
-          const isActive = pathname.startsWith(item.href);
+          const isActive =
+            item.href === '/settings'
+              ? pathname.startsWith('/settings')
+              : pathname === '/trips' || pathname.startsWith('/trips/');
           return (
             <Link
               key={item.href}

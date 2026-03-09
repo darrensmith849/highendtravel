@@ -1,5 +1,6 @@
 import {
   type Tenant,
+  type TenantSettings,
   type UserProfile,
   type Client,
   type Traveller,
@@ -11,6 +12,13 @@ import {
   type TravelPreference,
   type BookingBrief,
   type WorkflowEvent,
+  type IntegrationProvider,
+  type ProviderConnection,
+  type ProviderSyncRun,
+  type ProviderFieldMapping,
+  type EmailTemplate,
+  type PromptConfig,
+  type WorkflowRule,
 } from '@/types/database';
 import * as ids from '@/lib/constants/seed-ids';
 
@@ -947,10 +955,319 @@ export const demoWorkflowEvents: WorkflowEvent[] = [
 ];
 
 // ============================================
+// PHASE 2: TENANT SETTINGS
+// ============================================
+export const demoTenantSettings: TenantSettings = {
+  id: 'C0000000-0000-0000-0000-000000000001',
+  tenant_id: ids.TENANT_ID,
+  brand_name: 'Maison Atlas Journeys',
+  support_email: 'ops@maisonatlas.com',
+  default_timezone: 'Europe/London',
+  operational_notes: 'Phase 1 demo tenant. All integrations running in mock mode. No live client data.',
+  default_draft_status: 'draft',
+  reply_followup_days: 3,
+  internal_review_required: false,
+  email_generation_mode: 'draft_only',
+  created_at: '2025-01-01T00:00:00Z',
+  updated_at: now,
+};
+
+// ============================================
+// PHASE 2: INTEGRATION PROVIDERS
+// ============================================
+const PROVIDER_GMAIL_ID = 'D0000000-0000-0000-0000-000000000001';
+const PROVIDER_NOTION_ID = 'D0000000-0000-0000-0000-000000000002';
+const PROVIDER_SHAREFILE_ID = 'D0000000-0000-0000-0000-000000000003';
+
+export const demoIntegrationProviders: IntegrationProvider[] = [
+  {
+    id: PROVIDER_GMAIL_ID,
+    tenant_id: ids.TENANT_ID,
+    provider_type: 'gmail',
+    mode: 'mock',
+    enabled: true,
+    display_name: 'Gmail',
+    description: 'Hotel outreach email drafts and reply tracking',
+    config_checklist: [
+      { label: 'Google Workspace connected', done: false },
+      { label: 'OAuth credentials configured', done: false },
+      { label: 'Sending email address verified', done: false },
+      { label: 'Reply webhook configured', done: false },
+    ],
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: now,
+  },
+  {
+    id: PROVIDER_NOTION_ID,
+    tenant_id: ids.TENANT_ID,
+    provider_type: 'notion',
+    mode: 'mock',
+    enabled: true,
+    display_name: 'Notion',
+    description: 'Trip records, traveller data, and booking source of truth',
+    config_checklist: [
+      { label: 'Notion API key configured', done: false },
+      { label: 'Trip database selected', done: false },
+      { label: 'Traveller database selected', done: false },
+      { label: 'Field mappings verified', done: false },
+    ],
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: now,
+  },
+  {
+    id: PROVIDER_SHAREFILE_ID,
+    tenant_id: ids.TENANT_ID,
+    provider_type: 'sharefile',
+    mode: 'mock',
+    enabled: true,
+    display_name: 'ShareFile',
+    description: 'Client documents, preference forms, and secure file exchange',
+    config_checklist: [
+      { label: 'ShareFile API credentials configured', done: false },
+      { label: 'Client folder structure mapped', done: false },
+      { label: 'Document categories defined', done: false },
+      { label: 'Preference form template linked', done: false },
+    ],
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: now,
+  },
+];
+
+// ============================================
+// PHASE 2: PROVIDER CONNECTIONS
+// ============================================
+export const demoProviderConnections: ProviderConnection[] = [
+  { id: 'D1000000-0000-0000-0000-000000000001', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_GMAIL_ID, status: 'connected', last_connected_at: '2026-03-09T08:00:00Z', error_message: null, created_at: '2025-01-01T00:00:00Z', updated_at: now },
+  { id: 'D1000000-0000-0000-0000-000000000002', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, status: 'connected', last_connected_at: '2026-03-09T07:30:00Z', error_message: null, created_at: '2025-01-01T00:00:00Z', updated_at: now },
+  { id: 'D1000000-0000-0000-0000-000000000003', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_SHAREFILE_ID, status: 'connected', last_connected_at: '2026-03-08T22:00:00Z', error_message: null, created_at: '2025-01-01T00:00:00Z', updated_at: now },
+];
+
+// ============================================
+// PHASE 2: SYNC RUNS
+// ============================================
+export const demoSyncRuns: ProviderSyncRun[] = [
+  { id: 'D2000000-0000-0000-0000-000000000001', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, status: 'success', started_at: '2026-03-09T07:30:00Z', ended_at: '2026-03-09T07:30:12Z', records_processed: 5, records_created: 0, records_updated: 2, records_failed: 0, error_summary: null, created_at: '2026-03-09T07:30:00Z' },
+  { id: 'D2000000-0000-0000-0000-000000000002', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, status: 'success', started_at: '2026-03-08T07:30:00Z', ended_at: '2026-03-08T07:30:08Z', records_processed: 5, records_created: 1, records_updated: 1, records_failed: 0, error_summary: null, created_at: '2026-03-08T07:30:00Z' },
+  { id: 'D2000000-0000-0000-0000-000000000003', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_GMAIL_ID, status: 'success', started_at: '2026-03-09T08:00:00Z', ended_at: '2026-03-09T08:00:05Z', records_processed: 3, records_created: 0, records_updated: 1, records_failed: 0, error_summary: null, created_at: '2026-03-09T08:00:00Z' },
+  { id: 'D2000000-0000-0000-0000-000000000004', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_GMAIL_ID, status: 'warning', started_at: '2026-03-07T08:00:00Z', ended_at: '2026-03-07T08:00:03Z', records_processed: 3, records_created: 0, records_updated: 0, records_failed: 1, error_summary: 'Rate limit reached during reply check. 1 thread skipped.', created_at: '2026-03-07T08:00:00Z' },
+  { id: 'D2000000-0000-0000-0000-000000000005', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_SHAREFILE_ID, status: 'success', started_at: '2026-03-08T22:00:00Z', ended_at: '2026-03-08T22:00:18Z', records_processed: 8, records_created: 0, records_updated: 3, records_failed: 0, error_summary: null, created_at: '2026-03-08T22:00:00Z' },
+  { id: 'D2000000-0000-0000-0000-000000000006', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_SHAREFILE_ID, status: 'failed', started_at: '2026-03-06T22:00:00Z', ended_at: '2026-03-06T22:00:02Z', records_processed: 0, records_created: 0, records_updated: 0, records_failed: 0, error_summary: 'Authentication token expired. Re-authentication required.', created_at: '2026-03-06T22:00:00Z' },
+];
+
+// ============================================
+// PHASE 2: FIELD MAPPINGS
+// ============================================
+export const demoFieldMappings: ProviderFieldMapping[] = [
+  // Notion mappings
+  { id: 'D3000000-0000-0000-0000-000000000001', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Name', source_label: 'Trip Name', target_table: 'trips', target_field: 'title', target_label: 'Trip Title', is_required: true, status: 'valid', sample_value: 'Tuscany Anniversary Escape', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000002', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Destination', source_label: 'Destination', target_table: 'trips', target_field: 'destination', target_label: 'Destination', is_required: true, status: 'valid', sample_value: 'Tuscany, Italy', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000003', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Lead Consultant', source_label: 'Lead Consultant', target_table: 'trips', target_field: 'consultant_id', target_label: 'Consultant Owner', is_required: true, status: 'valid', sample_value: 'Sophie Lavigne', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000004', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Start Date', source_label: 'Travel Start', target_table: 'trips', target_field: 'start_date', target_label: 'Start Date', is_required: true, status: 'valid', sample_value: '2026-06-15', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000005', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'End Date', source_label: 'Travel End', target_table: 'trips', target_field: 'end_date', target_label: 'End Date', is_required: true, status: 'valid', sample_value: '2026-06-25', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000006', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Client Name', source_label: 'Client', target_table: 'clients', target_field: 'full_name', target_label: 'Client Name', is_required: true, status: 'valid', sample_value: 'Victoria & Edward Ashworth', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000007', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Internal Notes', source_label: 'Notes', target_table: 'trips', target_field: 'internal_notes', target_label: 'Internal Notes', is_required: false, status: 'valid', sample_value: 'Silver wedding anniversary celebration...', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000008', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Hotel Targets', source_label: 'Hotels', target_table: 'hotel_bookings', target_field: 'hotel_contact_id', target_label: 'Target Hotels', is_required: false, status: 'valid', sample_value: 'Castello di Velona, Borgo Santo Pietro', created_at: now, updated_at: now },
+  // ShareFile mappings
+  { id: 'D3000000-0000-0000-0000-000000000009', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_SHAREFILE_ID, source_field: 'FileName', source_label: 'File Name', target_table: 'documents', target_field: 'file_name', target_label: 'Document Name', is_required: true, status: 'valid', sample_value: 'Ashworth_Travel_Preferences.pdf', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000010', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_SHAREFILE_ID, source_field: 'Category', source_label: 'Document Category', target_table: 'documents', target_field: 'category', target_label: 'Category', is_required: true, status: 'valid', sample_value: 'preference_form', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000011', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_SHAREFILE_ID, source_field: 'DietaryNotes', source_label: 'Dietary Notes', target_table: 'travel_preferences', target_field: 'preference_value', target_label: 'Dietary Requirements', is_required: false, status: 'valid', sample_value: 'No shellfish (Victoria)', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000012', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_SHAREFILE_ID, source_field: 'Celebration', source_label: 'Celebration Type', target_table: 'trips', target_field: 'internal_notes', target_label: 'Special Occasions', is_required: false, status: 'valid', sample_value: '25th Wedding Anniversary', created_at: now, updated_at: now },
+  // Gmail mappings
+  { id: 'D3000000-0000-0000-0000-000000000013', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_GMAIL_ID, source_field: 'threadId', source_label: 'Thread ID', target_table: 'email_drafts', target_field: 'gmail_draft_id', target_label: 'Gmail Draft ID', is_required: true, status: 'valid', sample_value: 'mock-draft-001', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000014', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_GMAIL_ID, source_field: 'to', source_label: 'Recipient', target_table: 'email_drafts', target_field: 'to_email', target_label: 'To Email', is_required: true, status: 'valid', sample_value: 'reservations@castellodevelona.com', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000015', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_GMAIL_ID, source_field: 'subject', source_label: 'Subject', target_table: 'email_drafts', target_field: 'subject', target_label: 'Email Subject', is_required: true, status: 'valid', sample_value: 'Reservation Enquiry — Ashworth, June 15–20', created_at: now, updated_at: now },
+];
+
+// ============================================
+// PHASE 2: EMAIL TEMPLATES
+// ============================================
+export const demoEmailTemplates: EmailTemplate[] = [
+  {
+    id: 'E0000000-0000-0000-0000-000000000001',
+    tenant_id: ids.TENANT_ID,
+    template_key: 'initial_outreach',
+    name: 'Initial Hotel Outreach',
+    subject_template: 'Reservation Enquiry — {{client_name}}, {{travel_dates}}, {{room_type}}',
+    body_template: `Dear {{hotel_contact_name}},
+
+I hope this message finds you well. I am writing on behalf of my client{{client_plural}}, {{client_name}}, regarding a stay at {{hotel_name}}.
+
+We would like to enquire about availability for the following:
+
+Dates: {{travel_dates}}
+Room: {{room_type}}
+Guests: {{guest_count}}
+Travellers: {{traveller_summary}}
+
+{{special_requests_section}}
+{{dietary_section}}
+Please confirm availability and your best available rate for this period.
+
+Warm regards,
+{{consultant_name}}
+{{brand_name}}`,
+    is_active: true,
+    version: 1,
+    last_edited_by: ids.USER_ADMIN_ID,
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: now,
+  },
+  {
+    id: 'E0000000-0000-0000-0000-000000000002',
+    tenant_id: ids.TENANT_ID,
+    template_key: 'follow_up',
+    name: 'Follow-Up Email',
+    subject_template: 'Follow-Up: {{client_name}} — {{hotel_name}}, {{travel_dates}}',
+    body_template: `Dear {{hotel_contact_name}},
+
+I hope you are well. I wanted to follow up on my earlier enquiry regarding availability for {{client_name}} at {{hotel_name}} from {{travel_dates}}.
+
+Would you be able to provide an update on availability and rates at your earliest convenience?
+
+Many thanks,
+{{consultant_name}}
+{{brand_name}}`,
+    is_active: true,
+    version: 1,
+    last_edited_by: ids.USER_ADMIN_ID,
+    created_at: '2025-01-15T00:00:00Z',
+    updated_at: now,
+  },
+  {
+    id: 'E0000000-0000-0000-0000-000000000003',
+    tenant_id: ids.TENANT_ID,
+    template_key: 'confirmation_request',
+    name: 'Confirmation Request',
+    subject_template: 'Booking Confirmation — {{client_name}}, {{hotel_name}}, {{travel_dates}}',
+    body_template: `Dear {{hotel_contact_name}},
+
+Thank you for confirming availability. We would like to proceed with the booking for {{client_name}}.
+
+Booking Details:
+- Dates: {{travel_dates}}
+- Room: {{room_type}}
+- Guests: {{guest_count}}
+
+{{special_requests_section}}
+
+Please send through the confirmation and any deposit requirements.
+
+Kind regards,
+{{consultant_name}}
+{{brand_name}}`,
+    is_active: true,
+    version: 1,
+    last_edited_by: ids.USER_ADMIN_ID,
+    created_at: '2025-02-01T00:00:00Z',
+    updated_at: now,
+  },
+  {
+    id: 'E0000000-0000-0000-0000-000000000004',
+    tenant_id: ids.TENANT_ID,
+    template_key: 'special_requests',
+    name: 'Special Requests Clarification',
+    subject_template: 'Special Arrangements — {{client_name}}, {{hotel_name}}',
+    body_template: `Dear {{hotel_contact_name}},
+
+I am writing to discuss some additional arrangements for our upcoming guest{{client_plural}}, {{client_name}}, staying {{travel_dates}}.
+
+{{special_requests_section}}
+
+Could you kindly confirm which of these arrangements can be accommodated? Please let me know if any require additional coordination.
+
+Thank you,
+{{consultant_name}}
+{{brand_name}}`,
+    is_active: true,
+    version: 1,
+    last_edited_by: ids.USER_ADMIN_ID,
+    created_at: '2025-02-15T00:00:00Z',
+    updated_at: now,
+  },
+];
+
+// ============================================
+// PHASE 2: PROMPT CONFIGS
+// ============================================
+export const demoPromptConfigs: PromptConfig[] = [
+  {
+    id: 'F0000000-0000-0000-0000-000000000001',
+    tenant_id: ids.TENANT_ID,
+    prompt_key: 'booking_brief',
+    name: 'Booking Brief Generation',
+    system_prompt: `You are a luxury travel operations assistant for Maison Atlas Journeys. Generate a structured booking brief that a hotel reservations team can action.
+
+Include:
+- Guest profile and occasion
+- Room and date requirements
+- Dietary restrictions and allergies (critical)
+- Special arrangements needed
+- Communication style guidance
+
+Tone: Professional, warm, detail-oriented. Anticipate needs before they are asked.`,
+    tone_profile: 'professional_warm',
+    extra_detail_enabled: true,
+    banned_phrases: ['cheap', 'budget', 'discount', 'deal', 'bargain', 'affordable', 'basic'],
+    style_guidelines: [
+      'Always reference the occasion if one exists',
+      'Lead with guest comfort and preferences',
+      'Highlight dietary restrictions prominently',
+      'Use formal titles unless client prefers otherwise',
+      'Include specific room and view preferences',
+    ],
+    last_edited_by: ids.USER_ADMIN_ID,
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: now,
+  },
+  {
+    id: 'F0000000-0000-0000-0000-000000000002',
+    tenant_id: ids.TENANT_ID,
+    prompt_key: 'hotel_email',
+    name: 'Hotel Email Generation',
+    system_prompt: `You are a luxury travel consultant composing a hotel reservation enquiry on behalf of Maison Atlas Journeys. Write a professional, courteous email to the hotel contact.
+
+Structure:
+1. Warm greeting
+2. Introduction of client (without oversharing)
+3. Booking requirements (dates, room, guests)
+4. Special requests and dietary needs
+5. Rate enquiry
+6. Professional sign-off
+
+Tone: Sophisticated, warm, concise. Demonstrate that you value the hotel relationship.`,
+    tone_profile: 'professional_warm',
+    extra_detail_enabled: true,
+    banned_phrases: ['cheap', 'budget', 'discount', 'deal', 'ASAP', 'urgent'],
+    style_guidelines: [
+      'Open with a personal greeting to the contact',
+      'Reference the hotel by name naturally',
+      'Keep requests clear and numbered where helpful',
+      'Close with a professional but warm sign-off',
+      'Never pressure on price — enquire gracefully',
+    ],
+    last_edited_by: ids.USER_ADMIN_ID,
+    created_at: '2025-01-01T00:00:00Z',
+    updated_at: now,
+  },
+];
+
+// ============================================
+// PHASE 2: WORKFLOW RULES
+// ============================================
+export const demoWorkflowRules: WorkflowRule[] = [
+  { id: 'G0000000-0000-0000-0000-000000000001', tenant_id: ids.TENANT_ID, rule_key: 'review_before_send', name: 'Require review before sending', description: 'Email drafts must be reviewed by admin or operations before marking as sent', enabled: false, allowed_roles: ['admin', 'operations'], created_at: now, updated_at: now },
+  { id: 'G0000000-0000-0000-0000-000000000002', tenant_id: ids.TENANT_ID, rule_key: 'send_permission', name: 'Who can mark emails as sent', description: 'Only these roles can mark email drafts as sent to hotels', enabled: true, allowed_roles: ['admin', 'consultant', 'operations'], created_at: now, updated_at: now },
+  { id: 'G0000000-0000-0000-0000-000000000003', tenant_id: ids.TENANT_ID, rule_key: 'regenerate_draft', name: 'Who can regenerate email drafts', description: 'Only these roles can regenerate an existing email draft', enabled: true, allowed_roles: ['admin', 'consultant'], created_at: now, updated_at: now },
+  { id: 'G0000000-0000-0000-0000-000000000004', tenant_id: ids.TENANT_ID, rule_key: 'change_booking_status', name: 'Who can change booking status', description: 'Only these roles can manually change a hotel booking status', enabled: true, allowed_roles: ['admin', 'consultant', 'operations'], created_at: now, updated_at: now },
+  { id: 'G0000000-0000-0000-0000-000000000005', tenant_id: ids.TENANT_ID, rule_key: 'reset_demo_data', name: 'Who can reset demo data', description: 'Only these roles can reset the demo environment data', enabled: true, allowed_roles: ['admin'], created_at: now, updated_at: now },
+];
+
+// ============================================
 // IN-MEMORY STORE (for mock mode)
 // ============================================
 export interface DemoDataStore {
   tenant: Tenant;
+  tenantSettings: TenantSettings;
   users: UserProfile[];
   clients: Client[];
   travellers: Traveller[];
@@ -962,6 +1279,13 @@ export interface DemoDataStore {
   preferences: TravelPreference[];
   bookingBriefs: BookingBrief[];
   workflowEvents: WorkflowEvent[];
+  integrationProviders: IntegrationProvider[];
+  providerConnections: ProviderConnection[];
+  syncRuns: ProviderSyncRun[];
+  fieldMappings: ProviderFieldMapping[];
+  emailTemplates: EmailTemplate[];
+  promptConfigs: PromptConfig[];
+  workflowRules: WorkflowRule[];
 }
 
 let _store: DemoDataStore | null = null;
@@ -970,6 +1294,7 @@ export function getDemoStore(): DemoDataStore {
   if (!_store) {
     _store = {
       tenant: { ...demoTenant },
+      tenantSettings: { ...demoTenantSettings },
       users: demoUsers.map((u) => ({ ...u })),
       clients: demoClients.map((c) => ({ ...c })),
       travellers: demoTravellers.map((t) => ({ ...t })),
@@ -981,6 +1306,13 @@ export function getDemoStore(): DemoDataStore {
       preferences: demoPreferences.map((p) => ({ ...p })),
       bookingBriefs: demoBookingBriefs.map((b) => ({ ...b })),
       workflowEvents: demoWorkflowEvents.map((w) => ({ ...w })),
+      integrationProviders: demoIntegrationProviders.map((p) => ({ ...p, config_checklist: p.config_checklist.map((c) => ({ ...c })) })),
+      providerConnections: demoProviderConnections.map((c) => ({ ...c })),
+      syncRuns: demoSyncRuns.map((s) => ({ ...s })),
+      fieldMappings: demoFieldMappings.map((m) => ({ ...m })),
+      emailTemplates: demoEmailTemplates.map((t) => ({ ...t })),
+      promptConfigs: demoPromptConfigs.map((p) => ({ ...p, banned_phrases: [...p.banned_phrases], style_guidelines: [...p.style_guidelines] })),
+      workflowRules: demoWorkflowRules.map((r) => ({ ...r, allowed_roles: [...r.allowed_roles] })),
     };
   }
   return _store;

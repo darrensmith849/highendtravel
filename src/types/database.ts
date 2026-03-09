@@ -13,7 +13,12 @@ export type AuditAction =
   | 'generated_brief'
   | 'generated_email'
   | 'changed_status'
-  | 'viewed_document';
+  | 'viewed_document'
+  | 'updated_settings'
+  | 'updated_template'
+  | 'updated_mapping'
+  | 'updated_prompt'
+  | 'triggered_sync';
 
 export type DocumentStatus = 'completed' | 'missing' | 'pending';
 
@@ -21,6 +26,122 @@ export interface Tenant {
   id: string;
   name: string;
   slug: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface TenantSettings {
+  id: string;
+  tenant_id: string;
+  brand_name: string;
+  support_email: string;
+  default_timezone: string;
+  operational_notes: string | null;
+  default_draft_status: 'draft' | 'review_required';
+  reply_followup_days: number;
+  internal_review_required: boolean;
+  email_generation_mode: 'draft_only' | 'auto_send';
+  created_at: string;
+  updated_at: string;
+}
+
+export type ProviderType = 'gmail' | 'notion' | 'sharefile';
+export type ProviderMode = 'mock' | 'live' | 'not_configured';
+export type SyncStatus = 'success' | 'warning' | 'failed' | 'running' | 'idle';
+export type MappingStatus = 'valid' | 'invalid' | 'unmapped';
+
+export interface IntegrationProvider {
+  id: string;
+  tenant_id: string;
+  provider_type: ProviderType;
+  mode: ProviderMode;
+  enabled: boolean;
+  display_name: string;
+  description: string;
+  config_checklist: { label: string; done: boolean }[];
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProviderConnection {
+  id: string;
+  tenant_id: string;
+  provider_id: string;
+  status: 'connected' | 'disconnected' | 'error';
+  last_connected_at: string | null;
+  error_message: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface ProviderSyncRun {
+  id: string;
+  tenant_id: string;
+  provider_id: string;
+  status: SyncStatus;
+  started_at: string;
+  ended_at: string | null;
+  records_processed: number;
+  records_created: number;
+  records_updated: number;
+  records_failed: number;
+  error_summary: string | null;
+  created_at: string;
+}
+
+export interface ProviderFieldMapping {
+  id: string;
+  tenant_id: string;
+  provider_id: string;
+  source_field: string;
+  source_label: string;
+  target_table: string;
+  target_field: string;
+  target_label: string;
+  is_required: boolean;
+  status: MappingStatus;
+  sample_value: string | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface EmailTemplate {
+  id: string;
+  tenant_id: string;
+  template_key: string;
+  name: string;
+  subject_template: string;
+  body_template: string;
+  is_active: boolean;
+  version: number;
+  last_edited_by: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PromptConfig {
+  id: string;
+  tenant_id: string;
+  prompt_key: string;
+  name: string;
+  system_prompt: string;
+  tone_profile: string;
+  extra_detail_enabled: boolean;
+  banned_phrases: string[];
+  style_guidelines: string[];
+  last_edited_by: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface WorkflowRule {
+  id: string;
+  tenant_id: string;
+  rule_key: string;
+  name: string;
+  description: string;
+  enabled: boolean;
+  allowed_roles: UserRole[];
   created_at: string;
   updated_at: string;
 }
