@@ -1,5 +1,4 @@
 import { getDemoStore } from '@/lib/demo-data';
-import { IS_MOCK } from '@/lib/constants/env';
 import type { UserProfile, UserRole } from '@/types/database';
 import { USER_CONSULTANT_1_ID } from '@/lib/constants/seed-ids';
 
@@ -16,7 +15,9 @@ export function getMockUserId(): string {
 }
 
 export async function getCurrentUser(): Promise<UserProfile | null> {
-  if (IS_MOCK) {
+  // In mock/demo mode (default), use in-memory demo store
+  // Only skip mock if explicitly set to 'live'
+  if (process.env.NEXT_PUBLIC_INTEGRATION_MODE !== 'live') {
     const store = getDemoStore();
     return store.users.find((u) => u.id === _currentMockUserId) || null;
   }
