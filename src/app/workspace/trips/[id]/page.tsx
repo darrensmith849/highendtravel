@@ -151,7 +151,7 @@ export default function TripDetailPage({
       {/* Header */}
       <div className="mb-6">
         <Link
-          href="/trips"
+          href="/workspace/trips"
           className="inline-flex items-center gap-1.5 text-sm text-muted hover:text-accent transition-colors mb-4"
         >
           <ArrowLeft className="w-3.5 h-3.5" />

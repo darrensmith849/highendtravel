@@ -13,8 +13,8 @@ import { cn } from '@/lib/utils/format';
 import { UserSwitcher } from './UserSwitcher';
 
 const navItems = [
-  { href: '/trips', label: 'Trips', icon: Map },
-  { href: '/settings', label: 'Settings', icon: Settings },
+  { href: '/workspace/trips', label: 'Trips', icon: Map },
+  { href: '/workspace/settings', label: 'Settings', icon: Settings },
 ];
 
 export function Sidebar() {
@@ -30,7 +30,7 @@ export function Sidebar() {
     <aside className="fixed left-0 top-0 bottom-0 w-64 bg-card border-r border-border flex flex-col z-50">
       {/* Brand */}
       <div className="px-6 py-6 border-b border-border">
-        <Link href="/trips" className="flex items-center gap-3 group">
+        <Link href="/workspace/trips" className="flex items-center gap-3 group">
           <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
             <Compass className="w-4 h-4 text-accent" />
           </div>
@@ -59,9 +59,9 @@ export function Sidebar() {
       <nav className="flex-1 px-3 py-2 space-y-1">
         {navItems.map((item) => {
           const isActive =
-            item.href === '/settings'
-              ? pathname.startsWith('/settings')
-              : pathname === '/trips' || pathname.startsWith('/trips/');
+            item.href === '/workspace/settings'
+              ? pathname.startsWith('/workspace/settings')
+              : pathname === '/workspace/trips' || pathname.startsWith('/workspace/trips/');
           return (
             <Link
               key={item.href}

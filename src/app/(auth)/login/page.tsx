@@ -13,7 +13,7 @@ export default function LoginPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ userId }),
     });
-    router.push('/trips');
+    router.push('/workspace/trips');
   };
 
   return (

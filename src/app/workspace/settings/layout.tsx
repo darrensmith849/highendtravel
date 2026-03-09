@@ -15,14 +15,14 @@ import {
 import { cn } from '@/lib/utils/format';
 
 const settingsNav = [
-  { href: '/settings', label: 'General', icon: Settings, exact: true },
-  { href: '/settings/integrations', label: 'Integrations', icon: Plug },
-  { href: '/settings/mappings', label: 'Field Mappings', icon: ArrowRightLeft },
-  { href: '/settings/sync', label: 'Sync & Jobs', icon: RefreshCw },
-  { href: '/settings/templates', label: 'Email Templates', icon: Mail },
-  { href: '/settings/prompts', label: 'AI Prompts', icon: Sparkles },
-  { href: '/settings/workflow', label: 'Workflow Rules', icon: Shield },
-  { href: '/settings/audit', label: 'Audit Log', icon: ClipboardList },
+  { href: '/workspace/settings', label: 'General', icon: Settings, exact: true },
+  { href: '/workspace/settings/integrations', label: 'Integrations', icon: Plug },
+  { href: '/workspace/settings/mappings', label: 'Field Mappings', icon: ArrowRightLeft },
+  { href: '/workspace/settings/sync', label: 'Sync & Jobs', icon: RefreshCw },
+  { href: '/workspace/settings/templates', label: 'Email Templates', icon: Mail },
+  { href: '/workspace/settings/prompts', label: 'AI Prompts', icon: Sparkles },
+  { href: '/workspace/settings/workflow', label: 'Workflow Rules', icon: Shield },
+  { href: '/workspace/settings/audit', label: 'Audit Log', icon: ClipboardList },
 ];
 
 export default function SettingsLayout({
@@ -47,7 +47,7 @@ export default function SettingsLayout({
       <div className="flex gap-1 mb-8 border-b border-border pb-px overflow-x-auto">
         {settingsNav.map((item) => {
           const isActive = item.exact
-            ? pathname === item.href
+            ? pathname === item.href || pathname === item.href.replace('/workspace', '')
             : pathname.startsWith(item.href);
           return (
             <Link

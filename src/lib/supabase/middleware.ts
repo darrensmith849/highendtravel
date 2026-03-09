@@ -40,7 +40,7 @@ export async function updateSession(request: NextRequest) {
   // If authenticated and on login page, redirect to dashboard
   if (user && request.nextUrl.pathname === '/login') {
     const url = request.nextUrl.clone();
-    url.pathname = '/trips';
+    url.pathname = '/workspace/trips';
     return NextResponse.redirect(url);
   }
 
