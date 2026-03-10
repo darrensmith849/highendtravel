@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { getCurrentUser, setMockUserId } from '@/lib/auth';
+import { getCurrentUser, setMockUserCookie } from '@/lib/auth';
 
 export async function GET() {
   const user = await getCurrentUser();
@@ -12,7 +12,7 @@ export async function GET() {
 export async function POST(request: Request) {
   const body = await request.json();
   if (body.userId) {
-    setMockUserId(body.userId);
+    await setMockUserCookie(body.userId);
   }
   const user = await getCurrentUser();
   return NextResponse.json(user);

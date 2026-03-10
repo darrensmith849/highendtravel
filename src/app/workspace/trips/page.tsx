@@ -109,7 +109,7 @@ export default function TripsPage() {
         {filteredTrips.map((trip) => (
           <Link
             key={trip.id}
-            href={`/trips/${trip.id}`}
+            href={`/workspace/trips/${trip.id}`}
             className="group block bg-card border border-border rounded-xl p-6 hover:bg-card-hover hover:border-accent/20 transition-all duration-200"
           >
             <div className="flex items-start justify-between">
