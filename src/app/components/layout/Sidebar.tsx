@@ -36,7 +36,7 @@ export function Sidebar() {
           </div>
           <div>
             <h1 className="text-sm font-semibold tracking-wide text-foreground">
-              Maison Atlas
+              AlexTravels
             </h1>
             <p className="text-[10px] tracking-[0.2em] uppercase text-muted">
               Workflow Hub

@@ -27,7 +27,7 @@ const previewTokens: Record<string, string> = {
   '{{special_requests_section}}': 'Special Requests:\n- Anniversary cake on arrival\n- Private wine tasting\n- Late checkout',
   '{{dietary_section}}': 'Dietary Requirements:\n- Victoria: No shellfish',
   '{{consultant_name}}': 'Sophie Lavigne',
-  '{{brand_name}}': 'Maison Atlas Journeys',
+  '{{brand_name}}': 'AlexTravels',
 };
 
 function renderPreview(template: string): string {

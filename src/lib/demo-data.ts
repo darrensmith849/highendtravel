@@ -29,8 +29,8 @@ const now = '2026-03-09T10:00:00Z';
 // ============================================
 export const demoTenant: Tenant = {
   id: ids.TENANT_ID,
-  name: 'Maison Atlas Journeys',
-  slug: 'maison-atlas',
+  name: 'AlexTravels',
+  slug: 'alextravels',
   created_at: '2025-01-01T00:00:00Z',
   updated_at: now,
 };
@@ -42,7 +42,7 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_ADMIN_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'celeste@maisonatlas.com',
+    email: 'celeste@alextravels.com',
     full_name: 'Celeste Marchand',
     role: 'admin',
     avatar_url: null,
@@ -52,7 +52,7 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_CONSULTANT_1_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'sophie@maisonatlas.com',
+    email: 'sophie@alextravels.com',
     full_name: 'Sophie Lavigne',
     role: 'consultant',
     avatar_url: null,
@@ -62,7 +62,7 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_CONSULTANT_2_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'james@maisonatlas.com',
+    email: 'james@alextravels.com',
     full_name: 'James Harrington',
     role: 'consultant',
     avatar_url: null,
@@ -72,7 +72,7 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_OPS_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'elena@maisonatlas.com',
+    email: 'elena@alextravels.com',
     full_name: 'Elena Vasquez',
     role: 'operations',
     avatar_url: null,
@@ -82,7 +82,7 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_VIEWER_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'marcus@maisonatlas.com',
+    email: 'marcus@alextravels.com',
     full_name: 'Marcus Chen',
     role: 'viewer',
     avatar_url: null,
@@ -666,7 +666,7 @@ Please confirm availability and your best rate for this period.
 
 Warm regards,
 Sophie Lavigne
-Maison Atlas Journeys`,
+AlexTravels`,
     to_email: 'reservations@castellodevelona.com',
     status: 'draft',
     gmail_draft_id: 'mock-draft-001',
@@ -699,7 +699,7 @@ Please advise on availability, honeymoon package details, and rates.
 
 Kind regards,
 James Harrington
-Maison Atlas Journeys`,
+AlexTravels`,
     to_email: 'reservations@thealpinagstaad.ch',
     status: 'sent',
     gmail_draft_id: 'mock-draft-002',
@@ -730,7 +730,7 @@ Please confirm availability and share your current rates.
 
 Best regards,
 Sophie Lavigne
-Maison Atlas Journeys`,
+AlexTravels`,
     to_email: 'reservations@andbeyond.com',
     status: 'sent',
     gmail_draft_id: 'mock-draft-003',
@@ -960,8 +960,8 @@ export const demoWorkflowEvents: WorkflowEvent[] = [
 export const demoTenantSettings: TenantSettings = {
   id: 'C0000000-0000-0000-0000-000000000001',
   tenant_id: ids.TENANT_ID,
-  brand_name: 'Maison Atlas Journeys',
-  support_email: 'ops@maisonatlas.com',
+  brand_name: 'AlexTravels',
+  support_email: 'ops@alextravels.com',
   default_timezone: 'Europe/London',
   operational_notes: 'Phase 1 demo tenant. All integrations running in mock mode. No live client data.',
   default_draft_status: 'draft',
@@ -1195,7 +1195,7 @@ export const demoPromptConfigs: PromptConfig[] = [
     tenant_id: ids.TENANT_ID,
     prompt_key: 'booking_brief',
     name: 'Booking Brief Generation',
-    system_prompt: `You are a luxury travel operations assistant for Maison Atlas Journeys. Generate a structured booking brief that a hotel reservations team can action.
+    system_prompt: `You are a luxury travel operations assistant for AlexTravels. Generate a structured booking brief that a hotel reservations team can action.
 
 Include:
 - Guest profile and occasion
@@ -1224,7 +1224,7 @@ Tone: Professional, warm, detail-oriented. Anticipate needs before they are aske
     tenant_id: ids.TENANT_ID,
     prompt_key: 'hotel_email',
     name: 'Hotel Email Generation',
-    system_prompt: `You are a luxury travel consultant composing a hotel reservation enquiry on behalf of Maison Atlas Journeys. Write a professional, courteous email to the hotel contact.
+    system_prompt: `You are a luxury travel consultant composing a hotel reservation enquiry on behalf of AlexTravels. Write a professional, courteous email to the hotel contact.
 
 Structure:
 1. Warm greeting

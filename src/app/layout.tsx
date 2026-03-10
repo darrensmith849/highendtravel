@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Maison Atlas | Concierge Workflow Hub",
+  title: "AlexTravels | Concierge Workflow Hub",
   description: "Luxury travel operations platform",
 };
 

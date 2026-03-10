@@ -24,7 +24,7 @@ export default function LoginPage() {
             <Compass className="w-7 h-7 text-accent" />
           </div>
           <h1 className="text-2xl font-light tracking-wide text-foreground">
-            Maison Atlas Journeys
+            AlexTravels
           </h1>
           <p className="text-sm text-muted mt-1">Concierge Workflow Hub</p>
         </div>
