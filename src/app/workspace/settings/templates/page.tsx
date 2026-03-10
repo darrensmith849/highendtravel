@@ -26,7 +26,7 @@ const previewTokens: Record<string, string> = {
   '{{traveller_summary}}': 'Victoria Ashworth, Edward Ashworth',
   '{{special_requests_section}}': 'Special Requests:\n- Anniversary cake on arrival\n- Private wine tasting\n- Late checkout',
   '{{dietary_section}}': 'Dietary Requirements:\n- Victoria: No shellfish',
-  '{{consultant_name}}': 'Sophie Lavigne',
+  '{{consultant_name}}': 'Sarah Jordaan',
   '{{brand_name}}': 'AlexTravels',
 };
 

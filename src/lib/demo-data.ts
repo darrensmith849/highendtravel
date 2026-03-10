@@ -42,8 +42,8 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_ADMIN_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'celeste@alextravels.com',
-    full_name: 'Celeste Marchand',
+    email: 'alex@alextravels.com',
+    full_name: 'Alex Barnes',
     role: 'admin',
     avatar_url: null,
     created_at: '2025-01-01T00:00:00Z',
@@ -52,8 +52,8 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_CONSULTANT_1_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'sophie@alextravels.com',
-    full_name: 'Sophie Lavigne',
+    email: 'sarah@alextravels.com',
+    full_name: 'Sarah Jordaan',
     role: 'consultant',
     avatar_url: null,
     created_at: '2025-01-15T00:00:00Z',
@@ -62,8 +62,8 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_CONSULTANT_2_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'james@alextravels.com',
-    full_name: 'James Harrington',
+    email: 'rachel@alextravels.com',
+    full_name: 'Rachel Vinuya',
     role: 'consultant',
     avatar_url: null,
     created_at: '2025-02-01T00:00:00Z',
@@ -72,8 +72,8 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_OPS_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'elena@alextravels.com',
-    full_name: 'Elena Vasquez',
+    email: 'jamie@alextravels.com',
+    full_name: 'Jamie Grant',
     role: 'operations',
     avatar_url: null,
     created_at: '2025-01-10T00:00:00Z',
@@ -82,8 +82,8 @@ export const demoUsers: UserProfile[] = [
   {
     id: ids.USER_VIEWER_ID,
     tenant_id: ids.TENANT_ID,
-    email: 'marcus@alextravels.com',
-    full_name: 'Marcus Chen',
+    email: 'hannah@alextravels.com',
+    full_name: 'Hannah Cable',
     role: 'viewer',
     avatar_url: null,
     created_at: '2025-03-01T00:00:00Z',
@@ -665,7 +665,7 @@ A few details to share:
 Please confirm availability and your best rate for this period.
 
 Warm regards,
-Sophie Lavigne
+Sarah Jordaan
 AlexTravels`,
     to_email: 'reservations@castellodevelona.com',
     status: 'draft',
@@ -698,7 +698,7 @@ Key requests:
 Please advise on availability, honeymoon package details, and rates.
 
 Kind regards,
-James Harrington
+Rachel Vinuya
 AlexTravels`,
     to_email: 'reservations@thealpinagstaad.ch',
     status: 'sent',
@@ -729,7 +729,7 @@ The Pembertons are experienced safari travellers and keen photographers. Key det
 Please confirm availability and share your current rates.
 
 Best regards,
-Sophie Lavigne
+Sarah Jordaan
 AlexTravels`,
     to_email: 'reservations@andbeyond.com',
     status: 'sent',
@@ -1061,7 +1061,7 @@ export const demoFieldMappings: ProviderFieldMapping[] = [
   // Notion mappings
   { id: 'D3000000-0000-0000-0000-000000000001', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Name', source_label: 'Trip Name', target_table: 'trips', target_field: 'title', target_label: 'Trip Title', is_required: true, status: 'valid', sample_value: 'Tuscany Anniversary Escape', created_at: now, updated_at: now },
   { id: 'D3000000-0000-0000-0000-000000000002', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Destination', source_label: 'Destination', target_table: 'trips', target_field: 'destination', target_label: 'Destination', is_required: true, status: 'valid', sample_value: 'Tuscany, Italy', created_at: now, updated_at: now },
-  { id: 'D3000000-0000-0000-0000-000000000003', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Lead Consultant', source_label: 'Lead Consultant', target_table: 'trips', target_field: 'consultant_id', target_label: 'Consultant Owner', is_required: true, status: 'valid', sample_value: 'Sophie Lavigne', created_at: now, updated_at: now },
+  { id: 'D3000000-0000-0000-0000-000000000003', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Lead Consultant', source_label: 'Lead Consultant', target_table: 'trips', target_field: 'consultant_id', target_label: 'Consultant Owner', is_required: true, status: 'valid', sample_value: 'Sarah Jordaan', created_at: now, updated_at: now },
   { id: 'D3000000-0000-0000-0000-000000000004', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Start Date', source_label: 'Travel Start', target_table: 'trips', target_field: 'start_date', target_label: 'Start Date', is_required: true, status: 'valid', sample_value: '2026-06-15', created_at: now, updated_at: now },
   { id: 'D3000000-0000-0000-0000-000000000005', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'End Date', source_label: 'Travel End', target_table: 'trips', target_field: 'end_date', target_label: 'End Date', is_required: true, status: 'valid', sample_value: '2026-06-25', created_at: now, updated_at: now },
   { id: 'D3000000-0000-0000-0000-000000000006', tenant_id: ids.TENANT_ID, provider_id: PROVIDER_NOTION_ID, source_field: 'Client Name', source_label: 'Client', target_table: 'clients', target_field: 'full_name', target_label: 'Client Name', is_required: true, status: 'valid', sample_value: 'Victoria & Edward Ashworth', created_at: now, updated_at: now },
