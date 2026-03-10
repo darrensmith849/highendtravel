@@ -12,6 +12,14 @@ const roleIcons: Record<string, typeof Shield> = {
   viewer: Eye,
 };
 
+const titleByName: Record<string, string> = {
+  'Alex Barnes': 'Founder',
+  'Sarah Jordaan': 'Senior Travel Coordinator',
+  'Rachel Vinuya': 'Travel Coordinator',
+  'Jamie Grant': 'Travel Coordinator',
+  'Hannah Cable': 'Travel Coordinator',
+};
+
 export function UserSwitcher() {
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +58,7 @@ export function UserSwitcher() {
             {currentUser.full_name}
           </p>
           <p className="text-[10px] text-muted uppercase tracking-wider">
-            {currentUser.role}
+            {titleByName[currentUser.full_name] || currentUser.role}
           </p>
         </div>
         <ChevronDown className="w-3.5 h-3.5 text-muted" />
@@ -86,7 +94,7 @@ export function UserSwitcher() {
                       {user.full_name}
                     </p>
                     <p className="text-[10px] text-muted capitalize">
-                      {user.role}
+                      {titleByName[user.full_name] || user.role}
                     </p>
                   </div>
                 </button>
