@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="40%" stop-color="#3d1f5c"/>
+      <stop offset="70%" stop-color="#c9784e"/>
+      <stop offset="100%" stop-color="#e8a855"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2d4a1c"/>
+      <stop offset="100%" stop-color="#1a2e10"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Sun -->
+  <circle cx="600" cy="280" r="45" fill="#f0c75e" opacity="0.9"/>
+  <circle cx="600" cy="280" r="60" fill="#f0c75e" opacity="0.2"/>
+  <!-- Distant hills -->
+  <path d="M0 350 Q100 300 200 330 Q350 280 450 320 Q550 290 650 310 Q750 280 800 300 L800 500 L0 500Z" fill="#3d5a2a" opacity="0.7"/>
+  <!-- Rolling Tuscan hills -->
+  <path d="M0 380 Q80 340 180 360 Q280 320 380 350 Q480 310 580 340 Q680 320 780 350 L800 350 L800 500 L0 500Z" fill="url(#hill)"/>
+  <!-- Cypress trees -->
+  <path d="M120 290 L125 380 L115 380Z" fill="#1a3010" opacity="0.9"/>
+  <path d="M140 300 L144 375 L136 375Z" fill="#1a3010" opacity="0.8"/>
+  <path d="M580 310 L584 370 L576 370Z" fill="#1a3010" opacity="0.8"/>
+  <path d="M600 300 L604 365 L596 365Z" fill="#1a3010" opacity="0.9"/>
+  <path d="M620 310 L624 370 L616 370Z" fill="#1a3010" opacity="0.7"/>
+  <!-- Castle silhouette on hill -->
+  <rect x="340" y="310" width="60" height="40" fill="#2a1a0a" opacity="0.8"/>
+  <rect x="330" y="300" width="15" height="50" fill="#2a1a0a" opacity="0.8"/>
+  <rect x="375" y="295" width="12" height="55" fill="#2a1a0a" opacity="0.8"/>
+  <polygon points="330,300 337,280 345,300" fill="#2a1a0a" opacity="0.8"/>
+  <polygon points="375,295 381,275 387,295" fill="#2a1a0a" opacity="0.8"/>
+  <!-- Vineyard rows -->
+  <path d="M50 420 Q200 400 350 415 Q500 400 650 415 Q750 410 800 420" fill="none" stroke="#3a5a22" stroke-width="2" opacity="0.6"/>
+  <path d="M0 440 Q150 420 300 435 Q450 420 600 435 Q700 430 800 440" fill="none" stroke="#3a5a22" stroke-width="2" opacity="0.5"/>
+  <path d="M50 460 Q200 445 350 455 Q500 445 650 455 Q750 450 800 460" fill="none" stroke="#3a5a22" stroke-width="2" opacity="0.4"/>
+  <!-- Warm haze overlay -->
+  <rect width="800" height="500" fill="#c9a96e" opacity="0.05"/>
+</svg>

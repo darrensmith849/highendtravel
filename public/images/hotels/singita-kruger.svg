@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a0a1e"/>
+      <stop offset="30%" stop-color="#4a1a2e"/>
+      <stop offset="60%" stop-color="#c95a3a"/>
+      <stop offset="80%" stop-color="#e8a04a"/>
+      <stop offset="100%" stop-color="#f0c860"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5a4a2a"/>
+      <stop offset="100%" stop-color="#3a2a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Setting sun -->
+  <circle cx="400" cy="310" r="50" fill="#f0c860" opacity="0.9"/>
+  <circle cx="400" cy="310" r="70" fill="#f0c860" opacity="0.2"/>
+  <!-- Sun rays -->
+  <rect x="380" y="200" width="40" height="220" fill="#f0c860" opacity="0.05"/>
+  <!-- Savanna horizon -->
+  <path d="M0 330 Q200 325 400 330 Q600 325 800 330 L800 500 L0 500Z" fill="url(#ground)"/>
+  <!-- Acacia tree silhouette (large) -->
+  <rect x="198" y="260" width="4" height="70" fill="#1a0a0a" opacity="0.9"/>
+  <ellipse cx="200" cy="255" rx="55" ry="20" fill="#1a0a0a" opacity="0.85"/>
+  <ellipse cx="180" cy="260" rx="30" ry="12" fill="#1a0a0a" opacity="0.7"/>
+  <ellipse cx="225" cy="258" rx="25" ry="10" fill="#1a0a0a" opacity="0.7"/>
+  <!-- Acacia tree (distant) -->
+  <rect x="648" y="295" width="3" height="35" fill="#2a1a0a" opacity="0.7"/>
+  <ellipse cx="650" cy="292" rx="25" ry="10" fill="#2a1a0a" opacity="0.6"/>
+  <!-- Safari lodge silhouette -->
+  <rect x="450" y="300" width="120" height="30" fill="#2a1a0a" opacity="0.6"/>
+  <path d="M440 300 L510 275 L580 300" fill="#2a1a0a" opacity="0.6"/>
+  <!-- Grass texture -->
+  <path d="M0 400 Q50 390 100 400 Q150 395 200 400" fill="none" stroke="#6a5a3a" stroke-width="2" opacity="0.4"/>
+  <path d="M200 420 Q250 410 300 420 Q350 415 400 420" fill="none" stroke="#6a5a3a" stroke-width="2" opacity="0.3"/>
+  <path d="M500 410 Q550 400 600 410 Q650 405 700 410" fill="none" stroke="#6a5a3a" stroke-width="2" opacity="0.3"/>
+  <!-- Elephant silhouette (small, distant) -->
+  <ellipse cx="340" cy="340" rx="15" ry="10" fill="#2a1a0a" opacity="0.5"/>
+  <path d="M325 340 L325 350" stroke="#2a1a0a" stroke-width="2" opacity="0.5"/>
+  <path d="M355 340 L355 350" stroke="#2a1a0a" stroke-width="2" opacity="0.5"/>
+  <path d="M328 335 Q320 330 318 338" fill="none" stroke="#2a1a0a" stroke-width="2" opacity="0.5"/>
+  <!-- Birds -->
+  <path d="M300 200 Q305 195 310 200" fill="none" stroke="#1a0a0a" stroke-width="1.5" opacity="0.5"/>
+  <path d="M320 210 Q324 206 328 210" fill="none" stroke="#1a0a0a" stroke-width="1" opacity="0.4"/>
+</svg>

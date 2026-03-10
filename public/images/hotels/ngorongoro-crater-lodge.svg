@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="40%" stop-color="#2a2a4e"/>
+      <stop offset="70%" stop-color="#5a4a6e"/>
+      <stop offset="100%" stop-color="#8a6a7e"/>
+    </linearGradient>
+    <linearGradient id="crater" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a5a3a"/>
+      <stop offset="50%" stop-color="#4a7a4a"/>
+      <stop offset="100%" stop-color="#2a4a2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Stars -->
+  <circle cx="100" cy="40" r="1" fill="white" opacity="0.6"/>
+  <circle cx="250" cy="60" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="500" cy="30" r="1" fill="white" opacity="0.7"/>
+  <circle cx="700" cy="50" r="1.5" fill="white" opacity="0.4"/>
+  <!-- Milky way suggestion -->
+  <ellipse cx="400" cy="80" rx="300" ry="20" fill="white" opacity="0.03"/>
+  <!-- Crater rim (left) -->
+  <path d="M0 250 Q100 200 200 220 Q250 230 300 240 L300 350 Q200 380 100 360 Q50 340 0 350Z" fill="#3a4a2a" opacity="0.8"/>
+  <!-- Crater rim (right) -->
+  <path d="M500 240 Q550 230 600 220 Q700 200 800 250 L800 350 Q700 340 600 360 Q550 380 500 350Z" fill="#3a4a2a" opacity="0.8"/>
+  <!-- Crater floor (distant, below) -->
+  <path d="M250 350 Q400 400 550 350" fill="none" stroke="#4a6a4a" stroke-width="1" opacity="0.3"/>
+  <ellipse cx="400" cy="380" rx="150" ry="30" fill="#3a5a3a" opacity="0.3"/>
+  <!-- Lake in crater -->
+  <ellipse cx="380" cy="370" rx="50" ry="12" fill="#3a5a7a" opacity="0.4"/>
+  <!-- Lodge structures on crater rim -->
+  <circle cx="220" cy="215" r="12" fill="#4a3a2a" opacity="0.8"/>
+  <rect x="215" y="215" width="10" height="15" fill="#3a2a1a" opacity="0.8"/>
+  <circle cx="250" cy="222" r="10" fill="#4a3a2a" opacity="0.7"/>
+  <rect x="245" y="222" width="10" height="12" fill="#3a2a1a" opacity="0.7"/>
+  <circle cx="278" cy="228" r="11" fill="#4a3a2a" opacity="0.8"/>
+  <rect x="273" y="228" width="10" height="14" fill="#3a2a1a" opacity="0.8"/>
+  <!-- Lodge warm lights -->
+  <circle cx="220" cy="215" r="3" fill="#e8c85a" opacity="0.4"/>
+  <circle cx="250" cy="222" r="2.5" fill="#e8c85a" opacity="0.35"/>
+  <circle cx="278" cy="228" r="3" fill="#e8c85a" opacity="0.4"/>
+  <!-- Mist in crater -->
+  <ellipse cx="350" cy="340" rx="100" ry="15" fill="white" opacity="0.08"/>
+  <ellipse cx="450" cy="355" rx="80" ry="12" fill="white" opacity="0.06"/>
+  <!-- Foreground vegetation -->
+  <path d="M0 400 Q100 380 200 395 Q300 385 400 400 Q500 390 600 400 Q700 390 800 400 L800 500 L0 500Z" fill="#2a4a1a" opacity="0.7"/>
+  <!-- Grass tufts -->
+  <path d="M100 395 Q105 375 110 395" fill="none" stroke="#3a5a2a" stroke-width="2" opacity="0.5"/>
+  <path d="M300 390 Q305 370 310 390" fill="none" stroke="#3a5a2a" stroke-width="2" opacity="0.5"/>
+  <path d="M600 395 Q605 378 610 395" fill="none" stroke="#3a5a2a" stroke-width="2" opacity="0.5"/>
+</svg>

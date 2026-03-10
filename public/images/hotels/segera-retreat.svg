@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="30%" stop-color="#2a3a5e"/>
+      <stop offset="60%" stop-color="#c87a3e"/>
+      <stop offset="80%" stop-color="#e8aa5a"/>
+      <stop offset="100%" stop-color="#f0c870"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7a6a3a"/>
+      <stop offset="100%" stop-color="#4a3a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Mount Kenya silhouette (distant) -->
+  <path d="M500 280 L580 200 L620 220 L660 190 L700 230 L800 270 L800 320 L500 320Z" fill="#2a2a4e" opacity="0.5"/>
+  <!-- Snow on Mt Kenya -->
+  <path d="M640 210 L660 190 L680 210Z" fill="white" opacity="0.2"/>
+  <!-- Savanna -->
+  <path d="M0 320 Q200 310 400 320 Q600 315 800 320 L800 500 L0 500Z" fill="url(#ground)"/>
+  <!-- Large acacia tree (signature Laikipia) -->
+  <rect x="148" y="240" width="5" height="80" fill="#2a1a0a" opacity="0.9"/>
+  <ellipse cx="150" cy="235" rx="65" ry="22" fill="#2a3a1a" opacity="0.85"/>
+  <ellipse cx="120" cy="240" rx="35" ry="14" fill="#2a3a1a" opacity="0.7"/>
+  <ellipse cx="185" cy="238" rx="30" ry="12" fill="#2a3a1a" opacity="0.7"/>
+  <!-- Retreat structures (eco-lodge style) -->
+  <rect x="380" y="295" width="80" height="25" fill="#5a4a2a" opacity="0.7"/>
+  <path d="M375 295 L420 275 L465 295" fill="#4a3a1a" opacity="0.7"/>
+  <!-- Thatched roof texture -->
+  <path d="M385 290 L420 275 L455 290" fill="none" stroke="#6a5a3a" stroke-width="1" opacity="0.5"/>
+  <!-- Second structure -->
+  <rect x="480" y="300" width="60" height="20" fill="#5a4a2a" opacity="0.6"/>
+  <path d="M476 300 L510 285 L544 300" fill="#4a3a1a" opacity="0.6"/>
+  <!-- Warm lodge lights -->
+  <rect x="400" y="302" width="10" height="10" fill="#e8c85a" opacity="0.5"/>
+  <rect x="425" y="302" width="10" height="10" fill="#e8c85a" opacity="0.4"/>
+  <!-- Giraffe silhouette -->
+  <ellipse cx="650" cy="300" rx="10" ry="7" fill="#2a1a0a" opacity="0.5"/>
+  <path d="M648 293 L646 265" stroke="#2a1a0a" stroke-width="3" opacity="0.5"/>
+  <circle cx="644" cy="262" r="4" fill="#2a1a0a" opacity="0.5"/>
+  <path d="M643 260 L641 255" stroke="#2a1a0a" stroke-width="1.5" opacity="0.5"/>
+  <path d="M645 260 L646 255" stroke="#2a1a0a" stroke-width="1.5" opacity="0.5"/>
+  <!-- Giraffe legs -->
+  <path d="M642 307 L640 325" stroke="#2a1a0a" stroke-width="2" opacity="0.5"/>
+  <path d="M658 307 L660 325" stroke="#2a1a0a" stroke-width="2" opacity="0.5"/>
+  <!-- Tall grass -->
+  <path d="M50 380 Q55 360 60 380" fill="none" stroke="#8a7a4a" stroke-width="2" opacity="0.4"/>
+  <path d="M350 370 Q355 350 360 370" fill="none" stroke="#8a7a4a" stroke-width="2" opacity="0.4"/>
+  <path d="M700 375 Q705 358 710 375" fill="none" stroke="#8a7a4a" stroke-width="2" opacity="0.3"/>
+  <!-- Birds in formation -->
+  <path d="M300 180 Q305 175 310 180" fill="none" stroke="#2a1a0a" stroke-width="1" opacity="0.4"/>
+  <path d="M315 175 Q319 171 323 175" fill="none" stroke="#2a1a0a" stroke-width="1" opacity="0.35"/>
+  <path d="M305 186 Q308 183 311 186" fill="none" stroke="#2a1a0a" stroke-width="1" opacity="0.3"/>
+</svg>

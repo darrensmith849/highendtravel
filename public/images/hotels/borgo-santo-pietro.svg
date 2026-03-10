@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2a4a"/>
+      <stop offset="50%" stop-color="#4a6a8a"/>
+      <stop offset="80%" stop-color="#8aaa9a"/>
+      <stop offset="100%" stop-color="#c5d5b5"/>
+    </linearGradient>
+    <linearGradient id="garden" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4a6a3a"/>
+      <stop offset="100%" stop-color="#2a4a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Soft clouds -->
+  <ellipse cx="200" cy="120" rx="100" ry="30" fill="white" opacity="0.15"/>
+  <ellipse cx="550" cy="90" rx="80" ry="25" fill="white" opacity="0.1"/>
+  <!-- Distant Tuscan landscape -->
+  <path d="M0 300 Q150 270 300 290 Q450 260 600 280 Q700 265 800 275 L800 500 L0 500Z" fill="#5a7a4a" opacity="0.5"/>
+  <!-- Villa building -->
+  <rect x="280" y="240" width="180" height="90" fill="#c9a87a" opacity="0.85"/>
+  <rect x="260" y="230" width="220" height="15" fill="#8a6a4a" opacity="0.8"/>
+  <!-- Villa windows -->
+  <rect x="300" y="260" width="20" height="25" fill="#2a1a0a" opacity="0.6"/>
+  <rect x="340" y="260" width="20" height="25" fill="#2a1a0a" opacity="0.6"/>
+  <rect x="380" y="260" width="20" height="25" fill="#2a1a0a" opacity="0.6"/>
+  <rect x="420" y="260" width="20" height="25" fill="#2a1a0a" opacity="0.6"/>
+  <!-- Villa door -->
+  <rect x="355" y="295" width="30" height="35" rx="15" fill="#4a3020" opacity="0.8"/>
+  <!-- Garden grounds -->
+  <path d="M0 330 Q200 310 400 325 Q600 310 800 325 L800 500 L0 500Z" fill="url(#garden)"/>
+  <!-- Garden hedges -->
+  <ellipse cx="200" cy="370" rx="50" ry="20" fill="#3a5a2a" opacity="0.8"/>
+  <ellipse cx="350" cy="380" rx="40" ry="15" fill="#3a5a2a" opacity="0.7"/>
+  <ellipse cx="500" cy="370" rx="55" ry="20" fill="#3a5a2a" opacity="0.8"/>
+  <ellipse cx="650" cy="375" rx="45" ry="18" fill="#3a5a2a" opacity="0.7"/>
+  <!-- Olive trees -->
+  <circle cx="150" cy="340" r="20" fill="#5a7a4a" opacity="0.7"/>
+  <rect x="148" y="340" width="4" height="25" fill="#4a3a2a"/>
+  <circle cx="680" cy="335" r="18" fill="#5a7a4a" opacity="0.7"/>
+  <rect x="678" y="335" width="4" height="25" fill="#4a3a2a"/>
+  <!-- Garden path -->
+  <path d="M370 500 Q370 420 370 380 Q360 350 370 330" fill="none" stroke="#b5a585" stroke-width="8" opacity="0.4"/>
+  <!-- Lavender rows -->
+  <path d="M80 430 L250 430" stroke="#7a5a9a" stroke-width="4" opacity="0.4" stroke-dasharray="6 8"/>
+  <path d="M80 450 L250 450" stroke="#7a5a9a" stroke-width="4" opacity="0.3" stroke-dasharray="6 8"/>
+  <path d="M550 435 L720 435" stroke="#7a5a9a" stroke-width="4" opacity="0.4" stroke-dasharray="6 8"/>
+  <path d="M550 455 L720 455" stroke="#7a5a9a" stroke-width="4" opacity="0.3" stroke-dasharray="6 8"/>
+</svg>
