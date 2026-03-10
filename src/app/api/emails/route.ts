@@ -60,7 +60,7 @@ Please confirm availability and your best available rate for this period.
 
 Warm regards,
 ${user.full_name}
-Maison Atlas Journeys`;
+AlexTravels`;
 
   const draft = await gmail.createDraft(user.tenant_id, {
     subject,

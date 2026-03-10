@@ -408,7 +408,7 @@ export default function LandingPage() {
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
-              href="mailto:hello@2kosystems.com?subject=Concierge%20Workflow%20Hub%20—%20Systems%20Review"
+              href="mailto:hello@alextravels.com?subject=Concierge%20Workflow%20Hub%20—%20Systems%20Review"
               className="inline-flex items-center gap-2 px-6 py-3 border border-border text-muted rounded-lg text-sm hover:text-foreground hover:border-zinc-600 transition-colors"
             >
               Book a Systems Review
@@ -428,7 +428,7 @@ export default function LandingPage() {
               Concierge Workflow Hub
             </span>
             <span className="text-zinc-700">&middot;</span>
-            <span className="text-xs text-muted/60">2KO Systems</span>
+            <span className="text-xs text-muted/60">AlexTravels</span>
           </div>
           <p className="text-[11px] text-muted/40">
             Demo environment — All data shown is synthetic and for presentation purposes only.
