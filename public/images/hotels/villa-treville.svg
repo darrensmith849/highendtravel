@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1a2a5a"/>
+      <stop offset="50%" stop-color="#4a7aaa"/>
+      <stop offset="80%" stop-color="#7aaaca"/>
+      <stop offset="100%" stop-color="#9acaea"/>
+    </linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a6a9a"/>
+      <stop offset="100%" stop-color="#1a4a7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Sea -->
+  <path d="M0 280 Q200 275 400 280 Q600 285 800 280 L800 500 L0 500Z" fill="url(#sea)"/>
+  <!-- Sea shimmer -->
+  <path d="M200 320 L250 320" stroke="#8acaea" stroke-width="1" opacity="0.3"/>
+  <path d="M400 340 L440 340" stroke="#8acaea" stroke-width="1" opacity="0.25"/>
+  <path d="M550 310 L580 310" stroke="#8acaea" stroke-width="1" opacity="0.3"/>
+  <path d="M100 360 L140 360" stroke="#8acaea" stroke-width="1" opacity="0.2"/>
+  <!-- Cliff face -->
+  <path d="M0 200 Q50 210 100 195 Q150 180 200 200 Q250 215 300 190 Q320 180 340 200 L340 500 L0 500Z" fill="#8a7a5a" opacity="0.9"/>
+  <!-- Colorful Positano buildings cascading down cliff -->
+  <rect x="60" y="180" width="30" height="35" rx="2" fill="#e8a87a" opacity="0.85"/>
+  <rect x="100" y="175" width="35" height="40" rx="2" fill="#f0dab0" opacity="0.85"/>
+  <rect x="145" y="185" width="28" height="30" rx="2" fill="#d88a7a" opacity="0.85"/>
+  <rect x="180" y="178" width="32" height="38" rx="2" fill="#f0c890" opacity="0.85"/>
+  <rect x="220" y="190" width="30" height="28" rx="2" fill="#e8b89a" opacity="0.85"/>
+  <rect x="260" y="182" width="35" height="35" rx="2" fill="#d8a07a" opacity="0.85"/>
+  <!-- Lower row of buildings -->
+  <rect x="80" y="220" width="35" height="35" rx="2" fill="#f0c8a0" opacity="0.8"/>
+  <rect x="125" y="225" width="30" height="30" rx="2" fill="#e89a7a" opacity="0.8"/>
+  <rect x="165" y="218" width="38" height="38" rx="2" fill="#d8b08a" opacity="0.8"/>
+  <rect x="210" y="222" width="32" height="35" rx="2" fill="#e8c8a0" opacity="0.8"/>
+  <rect x="250" y="220" width="28" height="30" rx="2" fill="#c8887a" opacity="0.8"/>
+  <!-- Villa Treville (prominent) -->
+  <rect x="120" y="260" width="100" height="50" rx="3" fill="#f0dac0" opacity="0.9"/>
+  <rect x="110" y="255" width="120" height="8" fill="#c8a87a" opacity="0.8"/>
+  <!-- Villa windows -->
+  <rect x="135" y="270" width="12" height="15" rx="2" fill="#4a7aaa" opacity="0.5"/>
+  <rect x="158" y="270" width="12" height="15" rx="2" fill="#4a7aaa" opacity="0.5"/>
+  <rect x="181" y="270" width="12" height="15" rx="2" fill="#4a7aaa" opacity="0.5"/>
+  <!-- Arched entrance -->
+  <path d="M162 295 Q170 285 178 295 L178 310 L162 310Z" fill="#6a5a4a" opacity="0.7"/>
+  <!-- Garden terraces -->
+  <rect x="100" y="310" width="160" height="5" fill="#5a8a4a" opacity="0.5"/>
+  <rect x="80" y="340" width="180" height="5" fill="#4a7a3a" opacity="0.4"/>
+  <!-- Bougainvillea accents -->
+  <circle cx="95" cy="195" r="5" fill="#c8387a" opacity="0.6"/>
+  <circle cx="155" cy="210" r="4" fill="#c8387a" opacity="0.5"/>
+  <circle cx="235" cy="200" r="5" fill="#c8387a" opacity="0.6"/>
+  <!-- Small boat -->
+  <path d="M500 380 Q510 375 520 380 L518 383 L502 383Z" fill="white" opacity="0.4"/>
+</svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="40%" stop-color="#1a3a5a"/>
+      <stop offset="70%" stop-color="#3a7aaa"/>
+      <stop offset="100%" stop-color="#5a9aba"/>
+    </linearGradient>
+    <linearGradient id="ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a5a7a"/>
+      <stop offset="100%" stop-color="#1a3a5a"/>
+    </linearGradient>
+    <linearGradient id="cliff" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#8a7a5a"/>
+      <stop offset="100%" stop-color="#5a4a2a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#sky)"/>
+  <!-- Stars -->
+  <circle cx="100" cy="50" r="1" fill="white" opacity="0.6"/>
+  <circle cx="300" cy="30" r="1" fill="white" opacity="0.5"/>
+  <circle cx="500" cy="60" r="1" fill="white" opacity="0.7"/>
+  <circle cx="650" cy="40" r="1" fill="white" opacity="0.4"/>
+  <!-- Ocean -->
+  <path d="M0 320 Q200 315 400 320 Q600 325 800 320 L800 500 L0 500Z" fill="url(#ocean)"/>
+  <!-- Ocean waves -->
+  <path d="M0 340 Q100 335 200 340 Q300 345 400 340 Q500 335 600 340 Q700 345 800 340" fill="none" stroke="#4a8aaa" stroke-width="1.5" opacity="0.4"/>
+  <path d="M0 370 Q100 365 200 370 Q300 375 400 370 Q500 365 600 370 Q700 375 800 370" fill="none" stroke="#4a8aaa" stroke-width="1" opacity="0.3"/>
+  <!-- Dramatic cliff -->
+  <path d="M0 250 L0 500 L350 500 L350 300 Q340 260 320 250 Q300 230 280 260 Q270 280 250 260 Q230 230 200 270 Q180 290 160 260 Q140 230 120 265 Q100 290 80 260 Q50 230 0 250Z" fill="url(#cliff)"/>
+  <!-- Cliff texture -->
+  <path d="M50 300 L80 310 L60 320 L100 340" fill="none" stroke="#6a5a3a" stroke-width="1" opacity="0.5"/>
+  <path d="M150 280 L180 295 L160 310" fill="none" stroke="#6a5a3a" stroke-width="1" opacity="0.5"/>
+  <!-- Lodge on cliff top -->
+  <rect x="80" y="225" width="100" height="30" fill="#c9a87a" opacity="0.7"/>
+  <rect x="70" y="220" width="120" height="8" fill="#8a7a5a" opacity="0.8"/>
+  <rect x="200" y="235" width="80" height="25" fill="#c9a87a" opacity="0.6"/>
+  <rect x="195" y="230" width="90" height="8" fill="#8a7a5a" opacity="0.7"/>
+  <!-- Lodge windows (lit) -->
+  <rect x="95" y="235" width="10" height="12" fill="#e8c85a" opacity="0.7"/>
+  <rect x="115" y="235" width="10" height="12" fill="#e8c85a" opacity="0.6"/>
+  <rect x="145" y="235" width="10" height="12" fill="#e8c85a" opacity="0.7"/>
+  <!-- Moon reflection on water -->
+  <circle cx="600" cy="180" r="25" fill="#e8d8b8" opacity="0.8"/>
+  <ellipse cx="600" cy="350" rx="3" ry="40" fill="#e8d8b8" opacity="0.15"/>
+</svg>

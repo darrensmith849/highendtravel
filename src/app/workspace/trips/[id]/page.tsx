@@ -37,6 +37,7 @@ import {
   statusColor,
   cn,
 } from '@/lib/utils/format';
+import TripTimeline from './timeline';
 
 interface TripDetail extends Trip {
   travellers: Traveller[];
@@ -147,7 +148,7 @@ export default function TripDetailPage({
   );
 
   return (
-    <div className="px-8 py-6 max-w-[1400px]">
+    <div className="px-8 py-6 max-w-[1600px]">
       {/* Header */}
       <div className="mb-6">
         <Link
@@ -209,8 +210,22 @@ export default function TripDetailPage({
 
       {/* Main Grid */}
       <div className="grid grid-cols-12 gap-6">
-        {/* Left Column: Hotel Bookings Selector + Workspace */}
-        <div className="col-span-8 space-y-6">
+        {/* Left Column: Journey Timeline */}
+        <div className="col-span-3">
+          <div className="bg-card border border-border rounded-xl p-4 sticky top-6 max-h-[calc(100vh-120px)] overflow-y-auto">
+            <TripTimeline
+              bookings={trip.hotel_bookings}
+              tripStart={trip.start_date}
+              tripEnd={trip.end_date}
+              destination={trip.destination}
+              activeBooking={activeBooking}
+              onSelectBooking={setActiveBooking}
+            />
+          </div>
+        </div>
+
+        {/* Center Column: Hotel Bookings Workspace */}
+        <div className="col-span-5 space-y-6">
           {/* Hotel Booking Tabs */}
           <div className="bg-card border border-border rounded-xl overflow-hidden">
             <div className="flex border-b border-border">
