@@ -61,6 +61,7 @@ export default function TripDetailPage({
   const [loading, setLoading] = useState(true);
   const [activeBooking, setActiveBooking] = useState<string | null>(null);
   const [generating, setGenerating] = useState<string | null>(null);
+  const [activeTab, setActiveTab] = useState<'bookings' | 'journey'>('bookings');
 
   const loadTrip = () =>
     fetch(`/api/trips/${id}`)
@@ -208,24 +209,53 @@ export default function TripDetailPage({
         </div>
       )}
 
-      {/* Main Grid */}
-      <div className="grid grid-cols-12 gap-6">
-        {/* Left Column: Journey Timeline */}
-        <div className="col-span-3">
-          <div className="bg-card border border-border rounded-xl p-4 sticky top-6 max-h-[calc(100vh-120px)] overflow-y-auto">
+      {/* Tab Bar */}
+      <div className="flex gap-1 mb-6 border-b border-border">
+        <button
+          onClick={() => setActiveTab('bookings')}
+          className={cn(
+            'px-5 py-2.5 text-sm font-medium transition-colors border-b-2 -mb-px',
+            activeTab === 'bookings'
+              ? 'border-accent text-accent'
+              : 'border-transparent text-muted hover:text-foreground'
+          )}
+        >
+          Bookings
+        </button>
+        <button
+          onClick={() => setActiveTab('journey')}
+          className={cn(
+            'px-5 py-2.5 text-sm font-medium transition-colors border-b-2 -mb-px',
+            activeTab === 'journey'
+              ? 'border-accent text-accent'
+              : 'border-transparent text-muted hover:text-foreground'
+          )}
+        >
+          Journey
+        </button>
+      </div>
+
+      {/* Tab Content */}
+      {activeTab === 'journey' ? (
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-card border border-border rounded-xl p-6">
             <TripTimeline
               bookings={trip.hotel_bookings}
               tripStart={trip.start_date}
               tripEnd={trip.end_date}
               destination={trip.destination}
               activeBooking={activeBooking}
-              onSelectBooking={setActiveBooking}
+              onSelectBooking={(id) => {
+                setActiveBooking(id);
+                setActiveTab('bookings');
+              }}
             />
           </div>
         </div>
-
-        {/* Center Column: Hotel Bookings Workspace */}
-        <div className="col-span-5 space-y-6">
+      ) : (
+      <div className="grid grid-cols-12 gap-6">
+        {/* Left Column: Hotel Bookings Workspace */}
+        <div className="col-span-7 space-y-6">
           {/* Hotel Booking Tabs */}
           <div className="bg-card border border-border rounded-xl overflow-hidden">
             <div className="flex border-b border-border">
@@ -519,7 +549,7 @@ export default function TripDetailPage({
         </div>
 
         {/* Right Column: Travellers, Preferences, Documents */}
-        <div className="col-span-4 space-y-6">
+        <div className="col-span-5 space-y-6">
           {/* Travellers */}
           <div className="bg-card border border-border rounded-xl p-5">
             <h3 className="text-xs text-accent uppercase tracking-wider mb-3 flex items-center gap-2">
@@ -620,6 +650,7 @@ export default function TripDetailPage({
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 }
