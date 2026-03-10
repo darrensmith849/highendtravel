@@ -37,7 +37,7 @@ import {
   statusColor,
   cn,
 } from '@/lib/utils/format';
-import TripTimeline from './timeline';
+import JourneyTimeline from './JourneyTimeline';
 
 interface TripDetail extends Trip {
   travellers: Traveller[];
@@ -239,8 +239,10 @@ export default function TripDetailPage({
       {activeTab === 'journey' ? (
         <div className="max-w-3xl mx-auto">
           <div className="bg-card border border-border rounded-xl p-6">
-            <TripTimeline
+            <JourneyTimeline
               bookings={trip.hotel_bookings}
+              travellers={trip.travellers}
+              preferences={trip.preferences}
               tripStart={trip.start_date}
               tripEnd={trip.end_date}
               destination={trip.destination}
