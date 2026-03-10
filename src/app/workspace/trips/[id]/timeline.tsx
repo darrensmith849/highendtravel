@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { MapPin, Calendar, Users, Hotel } from 'lucide-react';
 import { formatDateRange, statusLabel, statusColor, cn } from '@/lib/utils/format';
 import { hotelImages } from '@/lib/constants/hotel-images';
@@ -63,7 +64,7 @@ export default function TripTimeline({
             parseISO(booking.check_out),
             parseISO(booking.check_in)
           );
-          const imageSrc = hotelImages[booking.hotel_contact_id];
+          const imageData = hotelImages[booking.hotel_contact_id];
 
           return (
             <div key={booking.id} className="relative pb-6 last:pb-0">
@@ -80,109 +81,13 @@ export default function TripTimeline({
               </div>
 
               {/* Booking card */}
-              <div
-                className={cn(
-                  'ml-12 rounded-xl border transition-all cursor-pointer group',
-                  isActive
-                    ? 'border-accent/40 bg-accent/5 shadow-lg shadow-accent/5'
-                    : 'border-border bg-card hover:border-accent/20 hover:bg-card-hover'
-                )}
-                onClick={() => onSelectBooking(booking.id)}
-              >
-                {/* Hotel image */}
-                {imageSrc && (
-                  <div className="relative h-36 overflow-hidden rounded-t-xl">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={imageSrc}
-                      alt={booking.hotel_contact?.hotel_name || 'Hotel'}
-                      className="w-full h-full object-cover"
-                    />
-                    {/* Gradient overlay for readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-                    {/* Date badge on image */}
-                    <div className="absolute top-3 right-3">
-                      <span
-                        className={cn(
-                          'px-2 py-0.5 rounded-full text-[10px] font-medium backdrop-blur-sm',
-                          statusColor(booking.status)
-                        )}
-                      >
-                        {statusLabel(booking.status)}
-                      </span>
-                    </div>
-
-                    {/* Hotel name on image */}
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <h4 className="text-sm font-medium text-white drop-shadow-md">
-                        {booking.hotel_contact?.hotel_name}
-                      </h4>
-                      <p className="text-[11px] text-white/70 flex items-center gap-1 mt-0.5">
-                        <MapPin className="w-3 h-3" />
-                        {booking.hotel_contact?.location}
-                      </p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Card content */}
-                <div className="p-3.5">
-                  {/* If no image, show hotel name here */}
-                  {!imageSrc && (
-                    <div className="flex items-start justify-between mb-2">
-                      <div>
-                        <h4 className="text-sm font-medium text-foreground">
-                          {booking.hotel_contact?.hotel_name}
-                        </h4>
-                        <p className="text-[11px] text-muted flex items-center gap-1">
-                          <MapPin className="w-3 h-3" />
-                          {booking.hotel_contact?.location}
-                        </p>
-                      </div>
-                      <span
-                        className={cn(
-                          'px-2 py-0.5 rounded-full text-[10px] font-medium',
-                          statusColor(booking.status)
-                        )}
-                      >
-                        {statusLabel(booking.status)}
-                      </span>
-                    </div>
-                  )}
-
-                  {/* Details row */}
-                  <div className="flex items-center gap-4 text-[11px] text-muted">
-                    <span className="flex items-center gap-1">
-                      <Calendar className="w-3 h-3" />
-                      {format(parseISO(booking.check_in), 'MMM d')} –{' '}
-                      {format(parseISO(booking.check_out), 'MMM d')}
-                    </span>
-                    <span className="text-muted/40">|</span>
-                    <span>{nights} night{nights !== 1 ? 's' : ''}</span>
-                    <span className="text-muted/40">|</span>
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3 h-3" />
-                      {booking.guests}
-                    </span>
-                  </div>
-
-                  {/* Room type */}
-                  {booking.room_type && (
-                    <p className="text-[11px] text-muted/60 mt-1.5 flex items-center gap-1">
-                      <Hotel className="w-3 h-3" />
-                      {booking.room_type}
-                    </p>
-                  )}
-
-                  {/* Special requests preview */}
-                  {booking.special_requests && (
-                    <p className="text-[10px] text-muted/50 mt-2 line-clamp-2 italic">
-                      {booking.special_requests}
-                    </p>
-                  )}
-                </div>
-              </div>
+              <TimelineCard
+                booking={booking}
+                imageData={imageData}
+                isActive={isActive}
+                nights={nights}
+                onSelect={() => onSelectBooking(booking.id)}
+              />
 
               {/* Gap indicator between bookings */}
               {index < sorted.length - 1 && (() => {
@@ -220,6 +125,130 @@ export default function TripTimeline({
             </p>
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+function TimelineCard({
+  booking,
+  imageData,
+  isActive,
+  nights,
+  onSelect,
+}: {
+  booking: BookingWithHotel;
+  imageData?: { src: string; fallback: string };
+  isActive: boolean;
+  nights: number;
+  onSelect: () => void;
+}) {
+  const [imgSrc, setImgSrc] = useState(imageData?.src);
+  const hasImage = !!imageData;
+
+  return (
+    <div
+      className={cn(
+        'ml-12 rounded-xl border transition-all cursor-pointer group',
+        isActive
+          ? 'border-accent/40 bg-accent/5 shadow-lg shadow-accent/5'
+          : 'border-border bg-card hover:border-accent/20 hover:bg-card-hover'
+      )}
+      onClick={onSelect}
+    >
+      {/* Hotel image */}
+      {hasImage && imgSrc && (
+        <div className="relative h-36 overflow-hidden rounded-t-xl">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={imgSrc}
+            alt={booking.hotel_contact?.hotel_name || 'Hotel'}
+            className="w-full h-full object-cover"
+            onError={() => setImgSrc(imageData?.fallback)}
+          />
+          {/* Gradient overlay for readability */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+          {/* Status badge on image */}
+          <div className="absolute top-3 right-3">
+            <span
+              className={cn(
+                'px-2 py-0.5 rounded-full text-[10px] font-medium backdrop-blur-sm',
+                statusColor(booking.status)
+              )}
+            >
+              {statusLabel(booking.status)}
+            </span>
+          </div>
+
+          {/* Hotel name on image */}
+          <div className="absolute bottom-3 left-3 right-3">
+            <h4 className="text-sm font-medium text-white drop-shadow-md">
+              {booking.hotel_contact?.hotel_name}
+            </h4>
+            <p className="text-[11px] text-white/70 flex items-center gap-1 mt-0.5">
+              <MapPin className="w-3 h-3" />
+              {booking.hotel_contact?.location}
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Card content */}
+      <div className="p-3.5">
+        {/* If no image, show hotel name here */}
+        {(!hasImage || !imgSrc) && (
+          <div className="flex items-start justify-between mb-2">
+            <div>
+              <h4 className="text-sm font-medium text-foreground">
+                {booking.hotel_contact?.hotel_name}
+              </h4>
+              <p className="text-[11px] text-muted flex items-center gap-1">
+                <MapPin className="w-3 h-3" />
+                {booking.hotel_contact?.location}
+              </p>
+            </div>
+            <span
+              className={cn(
+                'px-2 py-0.5 rounded-full text-[10px] font-medium',
+                statusColor(booking.status)
+              )}
+            >
+              {statusLabel(booking.status)}
+            </span>
+          </div>
+        )}
+
+        {/* Details row */}
+        <div className="flex items-center gap-4 text-[11px] text-muted">
+          <span className="flex items-center gap-1">
+            <Calendar className="w-3 h-3" />
+            {format(parseISO(booking.check_in), 'MMM d')} –{' '}
+            {format(parseISO(booking.check_out), 'MMM d')}
+          </span>
+          <span className="text-muted/40">|</span>
+          <span>{nights} night{nights !== 1 ? 's' : ''}</span>
+          <span className="text-muted/40">|</span>
+          <span className="flex items-center gap-1">
+            <Users className="w-3 h-3" />
+            {booking.guests}
+          </span>
+        </div>
+
+        {/* Room type */}
+        {booking.room_type && (
+          <p className="text-[11px] text-muted/60 mt-1.5 flex items-center gap-1">
+            <Hotel className="w-3 h-3" />
+            {booking.room_type}
+          </p>
+        )}
+
+        {/* Special requests preview */}
+        {booking.special_requests && (
+          <p className="text-[10px] text-muted/50 mt-2 line-clamp-2 italic">
+            {booking.special_requests}
+          </p>
+        )}
       </div>
     </div>
   );
